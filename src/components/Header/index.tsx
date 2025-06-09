@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function Header() {
-  const serviceProviderName = process.env.SERVICE_PROVIDER_NAME;
   return (
     <header className="py-4 px-6 flex justify-center bg-[var(--secondary)]">
       <div className="flex items-center">

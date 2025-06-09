@@ -1,8 +1,15 @@
+import { Goal, GraduationCap, Star, TrendingUp } from "lucide-react";
 import React from "react";
-import { GraduationCap, Goal, Star, TrendingUp } from "lucide-react";
+
+interface GoalType {
+  id: number;
+  icon: typeof Goal;
+  text: string;
+  emoji: string;
+}
 
 export default function Lead() {
-  const goals = [
+  const goals: GoalType[] = [
     {
       id: 1,
       icon: Star,
@@ -19,10 +26,11 @@ export default function Lead() {
     { id: 4, icon: GraduationCap, text: "Learn about 3D editing", emoji: "🎓" },
   ];
 
-  const [selectedGoal, setSelectedGoal] = React.useState<number | null>(null);
+  // const [selectedGoal, setSelectedGoal] = React.useState<number | null>(null);
 
   const handleGoalSelect = (goalId: number) => {
-    setSelectedGoal(goalId);
+    console.log(`Selected goal ID: ${goalId}`);
+    // setSelectedGoal(goalId);
   };
   return (
     <div>
@@ -48,7 +56,7 @@ export default function Lead() {
 
         {/* Goal Selection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          {goals.map((goal: any) => (
+          {goals.map((goal) => (
             <button
               key={goal.id}
               className={` bg-[var(--secondary-light)] text-[var(--text-contrast)] flex items-center p-4 rounded-lg border border-[var(--text-contrast)] hover:bg-[var(--secondary)] transition-colors text-left cursor-pointer `}

@@ -1,9 +1,6 @@
 "use client";
 import { LandingPage } from "@baxsell/components/pages/landing-page";
-import {
-  BusinessStoreProvider,
-  useBusinessStore,
-} from "@baxsell/providers/business-strore-provider";
+import { BusinessStoreProvider } from "@baxsell/providers/business-strore-provider";
 
 // foto turismo --
 // foto familiar

@@ -12,5 +12,5 @@ export type LeadStore = LeadState & LeadActions;
 
 export const useLeadStore = create<LeadStore>((set) => ({
   goal: "",
-  updateGoal: (by: string) => set((state) => ({ goal: by })),
+  updateGoal: (by: string) => set(() => ({ goal: by })),
 }));

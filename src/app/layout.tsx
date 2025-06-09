@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
-import "./globals.css";
-import Header from "@baxsell/components/Header";
 import Footer from "@baxsell/components/Footer";
-import { Bus } from "lucide-react";
+import Header from "@baxsell/components/Header";
 import { BusinessStoreProvider } from "@baxsell/providers/business-strore-provider";
+import type { Metadata } from "next";
+import { Lato, Playfair_Display } from "next/font/google";
+import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",

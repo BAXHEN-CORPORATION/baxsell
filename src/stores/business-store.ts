@@ -1,4 +1,4 @@
-import { create, createStore } from "zustand";
+import { createStore } from "zustand";
 
 export type BusinessState = {
   serviceProviderName: string;
@@ -34,9 +34,9 @@ export const createBusinessStore = (
 ) => {
   return createStore<BusinessStore>()((set) => ({
     ...initState,
-    updateCta: (by: string) => set((state) => ({ cta: by })),
+    updateCta: (by: string) => set(() => ({ cta: by })),
     updateServiceProviderName: (by: string) =>
-      set((state) => ({ serviceProviderName: by })),
+      set(() => ({ serviceProviderName: by })),
   }));
 };
 
