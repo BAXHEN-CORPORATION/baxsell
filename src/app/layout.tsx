@@ -12,6 +12,7 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
   fallback: ["system-ui", "sans-serif"],
   preload: true,
+  subsets: ["latin", "latin-ext"],
 });
 
 const lato = Lato({
@@ -21,6 +22,7 @@ const lato = Lato({
   display: "swap",
   fallback: ["system-ui", "sans-serif"],
   preload: true,
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
