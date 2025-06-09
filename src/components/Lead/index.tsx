@@ -1,9 +1,7 @@
-import { Goal, GraduationCap, Star, TrendingUp } from "lucide-react";
-import React from "react";
+import { Goal } from "lucide-react";
 
 interface GoalType {
   id: number;
-  icon: typeof Goal;
   text: string;
   emoji: string;
 }
@@ -12,18 +10,20 @@ export default function Lead() {
   const goals: GoalType[] = [
     {
       id: 1,
-      icon: Star,
-      text: "Request a professional video (reel)",
-      emoji: "✨",
+      text: "Família & Momentos Pessoais",
+      emoji: "📷",
     },
     {
       id: 2,
-      icon: TrendingUp,
-      text: "Scale & Automate Instagram Engagement",
-      emoji: "📈",
+      text: "Casamentos & Celebrações",
+      emoji: "💍",
     },
-    { id: 3, icon: Star, text: "Generate leads and sales", emoji: "💰" },
-    { id: 4, icon: GraduationCap, text: "Learn about 3D editing", emoji: "🎓" },
+    { id: 3, text: "Turismo & Experiências", emoji: "🌍" },
+    {
+      id: 4,
+      text: "Corporativo & Profissional",
+      emoji: "👔",
+    },
   ];
 
   // const [selectedGoal, setSelectedGoal] = React.useState<number | null>(null);
