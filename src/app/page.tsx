@@ -1,6 +1,7 @@
 "use client";
 import { LandingPage } from "@baxsell/components/pages/landing-page";
-import { BusinessStoreProvider } from "@baxsell/providers/business-strore-provider";
+import { BusinessStoreProvider } from "@baxsell/providers/business-store-provider";
+import { LeadStoreProvider } from "@baxsell/providers/lead-store-provider";
 
 // foto turismo --
 // foto familiar
@@ -29,7 +30,9 @@ import { BusinessStoreProvider } from "@baxsell/providers/business-strore-provid
 export default function Landing() {
   return (
     <BusinessStoreProvider>
-      <LandingPage />
+      <LeadStoreProvider>
+        <LandingPage />
+      </LeadStoreProvider>
     </BusinessStoreProvider>
   );
 }

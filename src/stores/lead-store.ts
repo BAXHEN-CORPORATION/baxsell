@@ -1,16 +1,70 @@
-import { create } from "zustand";
+import { createStore } from "zustand";
 
 export type LeadState = {
-  goal: string;
+  goals: LeadOption[];
+  goalSelected: LeadOption | null;
+  clientTypes: LeadOption[];
+  clientTypeSelected?: LeadOption | null;
 };
 
 export type LeadActions = {
-  updateGoal: (goal: string) => void;
+  updateGoal: (option: LeadOption) => void;
+  updateClientType: (option: LeadOption) => void;
 };
+
+export interface LeadOption {
+  id: number;
+  description: string;
+  emoji: string;
+}
 
 export type LeadStore = LeadState & LeadActions;
 
-export const useLeadStore = create<LeadStore>((set) => ({
-  goal: "",
-  updateGoal: (by: string) => set(() => ({ goal: by })),
-}));
+const goals: LeadOption[] = [
+  {
+    id: 1,
+    description: "Família & Momentos Pessoais",
+    emoji: "📷",
+  },
+  {
+    id: 2,
+    description: "Casamentos & Celebrações",
+    emoji: "💍",
+  },
+  { id: 3, description: "Turismo & Experiências", emoji: "🌍" },
+  {
+    id: 4,
+    description: "Corporativo & Profissional",
+    emoji: "👔",
+  },
+];
+
+const clientTypes: LeadOption[] = [
+  { id: 1, description: "Pessoa Individual", emoji: "👤" },
+  { id: 2, description: "Família ou Casal", emoji: "👨‍👩‍👧‍👦" },
+  { id: 3, description: "Empresa ou Marca", emoji: "🏢" },
+  { id: 4, description: "Organizador de Evento", emoji: "🎉" },
+];
+
+export const defaultInitState: LeadState = {
+  goals,
+  goalSelected: null,
+  clientTypes,
+  clientTypeSelected: null,
+};
+
+export const initLeadStore = (): LeadState => {
+  return defaultInitState;
+};
+
+export const createLeadStore = (initState: LeadState = defaultInitState) => {
+  return createStore<LeadStore>()((set) => ({
+    ...initState,
+    updateGoal: (by: LeadOption) => set(() => ({ goalSelected: by })),
+    updateClientType: (by: LeadOption) =>
+      set(() => ({ clientTypeSelected: by })),
+  }));
+};
+
+export const selectLeadGoals = (state: LeadState) => state.goals;
+export const selectClientTypes = (state: LeadState) => state.clientTypes;

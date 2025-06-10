@@ -8,25 +8,18 @@ export type BusinessState = {
 
 export type BusinessActions = {
   updateCta: (by: string) => void;
-  updateServiceProviderName: (name: string) => void;
 };
 
 export type BusinessStore = BusinessState & BusinessActions;
-
-export const initBusinessStore = (): BusinessState => {
-  return {
-    cta: "Vamos contar sua história?",
-    serviceProviderName: "Crismel Fotos",
-    heroHeading:
-      "Mais do que  fotos  criamos  experiências  que  duram  para  sempre.",
-  };
-};
 
 export const defaultInitState: BusinessState = {
   cta: "Vamos contar sua história?",
   serviceProviderName: "Crismel Fotos",
   heroHeading:
     "Mais do que  fotos  criamos  experiências  que  duram  para  sempre.",
+};
+export const initBusinessStore = (): BusinessState => {
+  return defaultInitState;
 };
 
 export const createBusinessStore = (
@@ -35,8 +28,6 @@ export const createBusinessStore = (
   return createStore<BusinessStore>()((set) => ({
     ...initState,
     updateCta: (by: string) => set(() => ({ cta: by })),
-    updateServiceProviderName: (by: string) =>
-      set(() => ({ serviceProviderName: by })),
   }));
 };
 
@@ -44,8 +35,6 @@ const formatHeroHeading = (heading: string) => {
   return heading.split("  ");
 };
 
-export const selectBusinessCta = (state: BusinessStore) => state.cta;
-export const selectServiceProviderName = (state: BusinessStore) =>
-  state.serviceProviderName;
-export const selectHeroHeading = (state: BusinessStore) =>
+export const selectBusinessCta = (state: BusinessState) => state.cta;
+export const selectHeroHeading = (state: BusinessState) =>
   formatHeroHeading(state.heroHeading);

@@ -1,9 +1,10 @@
 import Footer from "@baxsell/components/Footer";
 import Header from "@baxsell/components/Header";
-import { BusinessStoreProvider } from "@baxsell/providers/business-strore-provider";
+import { BusinessStoreProvider } from "@baxsell/providers/business-store-provider";
 import type { Metadata } from "next";
 import { Lato, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { LeadStoreProvider } from "@baxsell/providers/lead-store-provider";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -67,11 +68,13 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${lato.variable} antialiased`}
       >
         <BusinessStoreProvider>
-          <div className="flex flex-col min-h-screen bg-gradient-to-b from-white to-[var(--secondary)] text-white">
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          <LeadStoreProvider>
+            <div className="flex flex-col min-h-screen bg-gradient-to-b from-white to-[var(--secondary)] text-white">
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </LeadStoreProvider>
         </BusinessStoreProvider>
       </body>
     </html>

@@ -1,5 +1,5 @@
 import Lead from "@baxsell/components/Lead";
-import { useBusinessStore } from "@baxsell/providers/business-strore-provider";
+import { useBusinessStore } from "@baxsell/providers/business-store-provider";
 import {
   selectBusinessCta,
   selectHeroHeading,
@@ -24,13 +24,13 @@ export const LandingPage = () => {
 
       {/* Hero Section */}
       <div className="text-center max-w-4xl mx-auto mt-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--primary-light)] font-heading">
+        <h1 className="text-3xl md:text-4xl font-medium text-[var(--primary-light)] font-heading">
           {heroHeading.map((word, index) => {
             if (index % 2 === 0) {
               return <span key={index}>{word} </span>;
             }
             return (
-              <span key={index} className="font-extrabold">
+              <span key={index} className="font-extrabold text-5xl">
                 {word}{" "}
               </span>
             );
@@ -39,7 +39,7 @@ export const LandingPage = () => {
       </div>
 
       {/* Video Section */}
-      <div className="w-full max-w-4xl mt-12 relative">
+      <div className="w-full max-w-4xl mt-12 relative mb-5">
         <div className="aspect-video bg-black rounded-lg overflow-hidden relative">
           <div className="absolute inset-0 flex items-center justify-center">
             <iframe
