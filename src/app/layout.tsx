@@ -27,7 +27,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Crismel Fotos",
+  title: "Cris Mel Fotografia",
   keywords: [
     "fotografia",
     "fotografia de casamento",
