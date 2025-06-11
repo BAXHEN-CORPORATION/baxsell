@@ -5,11 +5,13 @@ export type LeadState = {
   goalSelected: LeadOption | null;
   clientTypes: LeadOption[];
   clientTypeSelected?: LeadOption | null;
+  productDescription?: string;
 };
 
 export type LeadActions = {
   updateGoal: (option: LeadOption) => void;
   updateClientType: (option: LeadOption) => void;
+  updateProductDescription: (option: string) => void;
 };
 
 export interface LeadOption {
@@ -51,6 +53,7 @@ export const defaultInitState: LeadState = {
   goalSelected: null,
   clientTypes,
   clientTypeSelected: null,
+  productDescription: "",
 };
 
 export const initLeadStore = (): LeadState => {
@@ -63,6 +66,8 @@ export const createLeadStore = (initState: LeadState = defaultInitState) => {
     updateGoal: (by: LeadOption) => set(() => ({ goalSelected: by })),
     updateClientType: (by: LeadOption) =>
       set(() => ({ clientTypeSelected: by })),
+    updateProductDescription: (by: string) =>
+      set(() => ({ productDescription: by })),
   }));
 };
 
