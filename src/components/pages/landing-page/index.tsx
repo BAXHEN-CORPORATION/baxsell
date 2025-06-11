@@ -4,9 +4,14 @@ import {
   selectBusinessCta,
   selectHeroHeading,
 } from "@baxsell/stores/business-store";
+import { LeadOption } from "@baxsell/stores/lead-store";
 import { useShallow } from "zustand/shallow";
 
-export const LandingPage = () => {
+interface LandingPageProps {
+  onGoalClick: (goal: LeadOption) => void;
+}
+
+export const LandingPage = ({ onGoalClick }: LandingPageProps) => {
   const cta = useBusinessStore(useShallow(selectBusinessCta));
 
   //   useShallow(selectServiceProviderName)
@@ -57,7 +62,7 @@ export const LandingPage = () => {
         </div>
       </div>
 
-      <Lead />
+      <Lead onClick={onGoalClick} />
     </main>
   );
 };

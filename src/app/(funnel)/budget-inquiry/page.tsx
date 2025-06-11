@@ -3,20 +3,17 @@ import React, { useState } from "react";
 import Button from "@baxsell/components/Button";
 import { useLeadStore } from "@baxsell/providers/lead-store-provider";
 import { useRouter } from "next/navigation";
-import { useShallow } from "zustand/shallow";
 
 export default function BudgetInquiry() {
   const router = useRouter();
-  const updateBudgetInquiry = useLeadStore(
-    useShallow((state) => state.updateProductDescription)
-  );
+  const updateBudget = useLeadStore((state) => state.updateBudget);
   const [budget, setBudget] = useState("");
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
 
-    updateBudgetInquiry(budget);
+    updateBudget(budget);
 
     router.push("/share-contact");
   };

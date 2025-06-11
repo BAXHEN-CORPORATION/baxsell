@@ -6,12 +6,16 @@ export type LeadState = {
   clientTypes: LeadOption[];
   clientTypeSelected?: LeadOption | null;
   productDescription?: string;
+  shareContact?: "yes" | "no";
+  budget?: string;
 };
 
 export type LeadActions = {
   updateGoal: (option: LeadOption) => void;
   updateClientType: (option: LeadOption) => void;
   updateProductDescription: (option: string) => void;
+  updateBudget: (option: string) => void;
+  updateShareContact: (option: "yes" | "no") => void;
 };
 
 export interface LeadOption {
@@ -54,6 +58,7 @@ export const defaultInitState: LeadState = {
   clientTypes,
   clientTypeSelected: null,
   productDescription: "",
+  shareContact: "no",
 };
 
 export const initLeadStore = (): LeadState => {
@@ -63,13 +68,25 @@ export const initLeadStore = (): LeadState => {
 export const createLeadStore = (initState: LeadState = defaultInitState) => {
   return createStore<LeadStore>()((set) => ({
     ...initState,
-    updateGoal: (by: LeadOption) => set(() => ({ goalSelected: by })),
     updateClientType: (by: LeadOption) =>
       set(() => ({ clientTypeSelected: by })),
+    updateGoal: (by: LeadOption) => {
+      console.log("Updating goal to:", by);
+      set(() => ({ goalSelected: by }));
+    },
     updateProductDescription: (by: string) =>
       set(() => ({ productDescription: by })),
+    updateShareContact: (by: "yes" | "no") => set(() => ({ shareContact: by })),
+    updateBudget: (by: string) => set(() => ({ budget: by })),
   }));
 };
 
 export const selectLeadGoals = (state: LeadState) => state.goals;
 export const selectClientTypes = (state: LeadState) => state.clientTypes;
+export const selectLeadInfo = (state: LeadState) => ({
+  goalSelected: state.goalSelected,
+  clientTypeSelected: state.clientTypeSelected,
+  productDescription: state.productDescription,
+  shareContact: state.shareContact,
+  budget: state.budget,
+});

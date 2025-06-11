@@ -6,14 +6,13 @@ import { Goal as GoalType } from "lucide-react";
 import { useShallow } from "zustand/shallow";
 import LeadButton from "../LeadButton";
 
-export default function Lead() {
-  const goals = useLeadStore(useShallow(selectLeadGoals));
-  const updateGoal = useLeadStore((state) => state.updateGoal);
+interface LeadProps {
+  onClick: (goal: LeadOption) => void;
+}
 
-  const handleGoalSelect = (goal: LeadOption) => {
-    // Update the selected goal in the store
-    updateGoal(goal);
-  };
+export default function Lead({ onClick }: LeadProps) {
+  const goals = useLeadStore(useShallow(selectLeadGoals));
+
   return (
     <div>
       {/* Ready to Scale Section */}
@@ -42,7 +41,7 @@ export default function Lead() {
             <LeadButton
               key={goal.id}
               {...goal}
-              onClick={() => handleGoalSelect(goal)}
+              onClick={() => onClick(goal)}
               href="/client-type"
             />
           ))}
