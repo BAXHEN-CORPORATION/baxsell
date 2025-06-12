@@ -5,6 +5,7 @@ import { Check, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useShallow } from "zustand/shallow";
+import axios from "axios";
 
 export default function Share() {
   const router = useRouter();
@@ -22,11 +23,14 @@ export default function Share() {
     sendLeadInfo();
   };
 
-  const sendLeadInfo = () => {
+  const sendLeadInfo = async () => {
     // This function can be used to send lead information to an API or service
     // For now, it is empty as the logic is not defined in the original code
 
     console.log("Lead information sent", { leadInfo });
+
+    await axios.post("/api/send-request");
+
     router.push("/thank-you");
   };
 
