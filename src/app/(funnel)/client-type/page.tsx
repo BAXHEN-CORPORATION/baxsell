@@ -16,7 +16,7 @@ export default function ClientType() {
     updateClientType(option);
   };
   return (
-    <main className="grid grid-rows-[100px_1fr_140px] items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <main className="flex flex-col items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <h1 className="text-4xl md:text-5xl font-heading text-[var(--primary-light)] font-bold text-center mb-8">
         Você se encaixa em qual perfil de cliente?
       </h1>

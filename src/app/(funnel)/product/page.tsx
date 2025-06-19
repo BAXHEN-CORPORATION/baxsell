@@ -22,8 +22,8 @@ export default function Product() {
   };
 
   return (
-    <main className="grid grid-rows-[100px_1fr_140px] items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="max-w-2xl w-full text-center mb-10">
+    <main className="flex flex-col items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="max-w-2xl w-full text-center md:mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-[var(--primary-light)] text-center mb-4">
           Qual história vamos
           <br /> transformar em imagens
