@@ -53,8 +53,15 @@ export const metadata: Metadata = {
     "fotografia setúbal",
     "fotografia portugal",
     "fotografia lisboa",
+    "fotografos setúbal",
+    "fotografos lisboa",
+    "fotografos de casamentos",
+    "fotografos de estúdio",
+    "fotografos de newborn",
+    "fotografos de grávida",
   ],
-  description: "Crismel Fotos - Capturando momentos únicos com paixão e arte.",
+  description:
+    "Cris Mel Fotografia - Fotografo de Casamentos, Estúdios, Newborn e Grávida - Fotógrafos de Setúbal, Lisboa e Região, Portugal",
 };
 
 export default function RootLayout({

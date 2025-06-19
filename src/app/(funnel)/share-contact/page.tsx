@@ -1,18 +1,16 @@
 "use client";
 import { useLeadStore } from "@baxsell/providers/lead-store-provider";
-import { selectLeadInfo } from "@baxsell/stores/lead-store";
 import { Check, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useShallow } from "zustand/shallow";
-import axios from "axios";
 
 export default function Share() {
   const router = useRouter();
   const updateShareContact = useLeadStore(
     useShallow((state) => state.updateShareContact)
   );
-  const leadInfo = useLeadStore(useShallow(selectLeadInfo));
+
   const [selectedOption, setSelectedOption] = React.useState<"yes" | "no" | "">(
     ""
   );
@@ -20,18 +18,7 @@ export default function Share() {
   const onOptionSelect = (option: "yes" | "no") => {
     setSelectedOption(option);
     updateShareContact(option);
-    sendLeadInfo();
-  };
-
-  const sendLeadInfo = async () => {
-    // This function can be used to send lead information to an API or service
-    // For now, it is empty as the logic is not defined in the original code
-
-    console.log("Lead information sent", { leadInfo });
-
-    await axios.post("/api/send-request");
-
-    router.push("/thank-you");
+    router.push("/contact");
   };
 
   return (
