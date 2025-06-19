@@ -22,19 +22,19 @@ export default function Share() {
   };
 
   return (
-    <div className="grid grid-rows-[100px_110px_1fr] items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-4 sm:p-20 font-[family-name:var(--font-geist-sans)] w-[80%] align-items-center m-auto">
+    <div className="flex- flex-col items-center justify-items-center min-h-(--page-min-height) p-10 pb-20 gap-8 sm:p-14 font-[family-name:var(--font-geist-sans)] w-full md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] align-items-center m-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-[var(--primary-light)] text-center mb-8">
         Se não conseguirmos assumir o seu projeto, <br /> podemos compartilhá-lo
         com nossa <br /> rede de fotográfos especialistas?
       </h1>
 
-      <p className="text-sm md:text-base max-w-2xl text-[var(--primary-light)]">
+      <p className="text-sm md:text-base max-w-2xl text-[var(--primary-light)] text-center mb-8">
         É um grupo selecionado, e vamos te ajudar a encontrar a pessoa certa —
         gratuitamente, como forma de apoiar novos talentos.
       </p>
 
       <div className="mb-auto">
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
           {/* Yes Option */}
           <button
             className={`w-64 h-44 rounded-lg flex flex-col items-center justify-center transition-all cursor-pointer hover:scale-105 ${

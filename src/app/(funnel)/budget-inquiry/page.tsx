@@ -19,13 +19,13 @@ export default function BudgetInquiry() {
   };
 
   return (
-    <main className="grid grid-rows-[100px_140px_1fr] items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)] w-[50%] align-items-center m-auto">
+    <main className="flex- flex-col items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)] w-full md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] align-items-center m-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading text-[var(--primary-light)] text-center mb-2">
         Qual é o seu orçamento realista <br />
         para este projeto?
       </h1>
 
-      <div className="mb-2 mt-8 text-center">
+      <div className="mb-8 mt-8 text-center">
         <p className="text-[var(--primary-light)] font-bold mb-2 ">
           Observação:
         </p>
