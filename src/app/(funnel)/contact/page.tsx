@@ -1,7 +1,7 @@
 "use client";
 import CountryList from "country-list-with-dial-code-and-flag";
 import { Link, Mail, Phone, User } from "lucide-react";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 
 import Button from "@baxsell/components/Button";
 import { useLeadStore } from "@baxsell/providers/lead-store-provider";
@@ -25,14 +25,24 @@ export default function Contact() {
     }));
   };
 
-  const onSubmit = () => {
+  const sendLead = () => {};
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log("Form submitted with data:", formData, leadInfo);
+
+    sendLead();
   };
 
   React.useEffect(() => {
     const counties = CountryList.findOneByCountryCode("en-US");
+    //@ts-expect-error it's a workaround for the missing type definition on different browsers
+    const userLang = navigator.language || navigator.userLanguage!;
     console.log(Intl.DateTimeFormat().resolvedOptions().locale);
     console.log("Available countries:", counties);
+    console.log("User language:", userLang);
+    // abordagem para brasileiro ou portugues de acordo com o navegador
+    // redirect to begin of funnel if user goes trhou link directly
   }, []);
 
   return (
