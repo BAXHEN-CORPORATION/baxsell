@@ -65,12 +65,15 @@ export const metadata: Metadata = {
     "Cris Mel Fotografia - Fotografo de Casamentos, Estúdios, Newborn e Grávida - Fotógrafos de Setúbal, Lisboa e Região, Portugal",
 };
 
+//OPEN GRAPH TAGS
+
 const property = {
   id: "1",
   name: "Cris Mel Fotografia",
   description:
     "Capturando momentos únicos com paixão e profissionalismo. Especializada em fotografia de casamentos, eventos e retratos.",
-  image: "https://example.com/images/landing-image.jpg",
+  image:
+    "https://crismelfotografia.baxhen.com/_next/image?url=%preview.png&w=128&q=75",
 };
 
 export default function RootLayout({
