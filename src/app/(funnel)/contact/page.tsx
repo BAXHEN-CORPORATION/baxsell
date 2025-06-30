@@ -7,8 +7,12 @@ import Button from "@baxsell/components/Button";
 import { useLeadStore } from "@baxsell/providers/lead-store-provider";
 import { selectLeadInfo } from "@baxsell/stores/lead-store";
 import { useShallow } from "zustand/shallow";
+import { useSendRequest } from "@baxsell/hooks/use-send-request";
+import { useRouter } from "next/navigation";
 
 export default function Contact() {
+  const router = useRouter();
+  const { sendRequest } = useSendRequest();
   const leadInfo = useLeadStore(useShallow(selectLeadInfo));
   const [formData, setFormData] = React.useState({
     name: "",
@@ -25,13 +29,39 @@ export default function Contact() {
     }));
   };
 
-  const sendLead = () => {};
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted with data:", formData, leadInfo);
 
-    sendLead();
+    if (
+      !leadInfo.goalSelected ||
+      !leadInfo.clientTypeSelected ||
+      !leadInfo.productDescription ||
+      !leadInfo.shareContact ||
+      !leadInfo.budget
+    ) {
+      console.error("Lead information is incomplete:", leadInfo);
+      return;
+    }
+
+    const resp = await sendRequest({
+      name: formData.name,
+      email: formData.email,
+      ig_website: formData.website,
+      phone: formData.phone,
+      goal: leadInfo.goalSelected.description,
+      clientType: leadInfo.clientTypeSelected.description,
+      productDescription: leadInfo.productDescription,
+      budget: leadInfo.budget,
+      shareContact: leadInfo.shareContact,
+    });
+
+    if (!resp) {
+      console.error("Failed to send request");
+      return;
+    }
+
+    router.push("/thank-you");
   };
 
   React.useEffect(() => {

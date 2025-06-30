@@ -8,6 +8,7 @@ export type LeadState = {
   productDescription?: string;
   shareContact?: "yes" | "no";
   budget?: string;
+  name?: string;
 };
 
 export type LeadActions = {
@@ -15,6 +16,7 @@ export type LeadActions = {
   updateClientType: (option: LeadOption) => void;
   updateProductDescription: (option: string) => void;
   updateBudget: (option: string) => void;
+  updateName: (option: string) => void;
   updateShareContact: (option: "yes" | "no") => void;
 };
 
@@ -70,14 +72,12 @@ export const createLeadStore = (initState: LeadState = defaultInitState) => {
     ...initState,
     updateClientType: (by: LeadOption) =>
       set(() => ({ clientTypeSelected: by })),
-    updateGoal: (by: LeadOption) => {
-      console.log("Updating goal to:", by);
-      set(() => ({ goalSelected: by }));
-    },
+    updateGoal: (by: LeadOption) => set(() => ({ goalSelected: by })),
     updateProductDescription: (by: string) =>
       set(() => ({ productDescription: by })),
     updateShareContact: (by: "yes" | "no") => set(() => ({ shareContact: by })),
     updateBudget: (by: string) => set(() => ({ budget: by })),
+    updateName: (by: string) => set(() => ({ name: by })),
   }));
 };
 

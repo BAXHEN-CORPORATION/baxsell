@@ -24,24 +24,38 @@ const transporter = nodemailer.createTransport({
 
 const readFileAsync = promisify(fs.readFile);
 
-export async function GET(req: Request) {
-  console.log({ req });
+export interface SendRequestBody {
+  name: string;
+  email: string;
+  ig_website: string;
+  phone: string;
+  goal: string;
+  clientType: string;
+  productDescription: string;
+  budget: string;
+  shareContact: "yes" | "no";
+}
+
+export async function POST(req: Request) {
+  const body: SendRequestBody = await req.json();
+
   try {
     const source = await readFileAsync(
       "./public/email-templates/send-request.html",
       "utf-8"
     );
 
-    const name = "Leonardo Batista";
-    const goal = "Casamentos & Celebrações";
-    const clientType = "Pessoa Individual";
-    const productDescription =
-      "Gostaria de solicitar um orçamento para uma sessão de fotos de casamento, incluindo detalhes sobre o local, data e número de convidados.";
-    const budget = "R$ 5.000,00";
-    const shareContact = "sim";
-    const email = "leo292629@gmail.com";
-    const ig_website = "https://instagram.com/oeleo.batista";
-    const phone = "+351 912 345 678";
+    const {
+      name,
+      email,
+      ig_website: ig_website = "",
+      phone = "",
+      goal,
+      clientType,
+      productDescription,
+      budget = "",
+      shareContact = "no",
+    } = body;
 
     const replacements = {
       name,
@@ -61,7 +75,6 @@ export async function GET(req: Request) {
       from: '"Baxhen Corporation" <no-reply@baxhen.com>',
       to: SERVICE_PROVIDER_EMAIL, // list of receivers
       subject: `Solicitação de Orçamento - ${SERVICE_PROVIDER_NAME}`,
-      text: "Hello world?", // plain‑text body
       html: hmtlTemplate, // HTML body
     });
 

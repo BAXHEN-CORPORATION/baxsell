@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Lato, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { LeadStoreProvider } from "@baxsell/providers/lead-store-provider";
+import Head from "next/head";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -64,6 +65,14 @@ export const metadata: Metadata = {
     "Cris Mel Fotografia - Fotografo de Casamentos, Estúdios, Newborn e Grávida - Fotógrafos de Setúbal, Lisboa e Região, Portugal",
 };
 
+const property = {
+  id: "1",
+  name: "Cris Mel Fotografia",
+  description:
+    "Capturando momentos únicos com paixão e profissionalismo. Especializada em fotografia de casamentos, eventos e retratos.",
+  image: "https://example.com/images/landing-image.jpg",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,6 +80,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <meta property="og:title" content={property.name} />
+        <meta property="og:description" content={property.description} />
+        <meta property="og:image" content={property.image} />
+        <meta
+          property="og:url"
+          content={`https://crismelfotografia.baxhen.com/_next/image?url=%2Flogo.png&w=128&q=75`}
+        />
+        <meta property="og:type" content="website" />
+      </Head>
       <body
         className={`${playfairDisplay.variable} ${lato.variable} antialiased`}
       >
