@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     "Cris Mel Fotografia - Fotografo de Casamentos, Estúdios, Newborn e Grávida - Fotógrafos de Setúbal, Lisboa e Região, Portugal",
 };
 
-//OPEN GRAPH TAGS
+//OPEN GRAPH TAGS https://medium.com/@eduardojs999/how-to-use-whatsapp-open-graph-preview-with-next-js-avoiding-common-pitfalls-88fea4b7c949
 
 const property = {
   id: "1",

@@ -19,7 +19,7 @@ export const LandingPage = ({ onGoalClick }: LandingPageProps) => {
   const heroHeading = useBusinessStore(useShallow(selectHeroHeading));
 
   return (
-    <main className="flex-1 flex flex-col items-center px-4">
+    <main className="flex flex-col items-center justify-items-center min-h-(--page-min-height) p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {/* Collaboration CTA */}
       <div className="text-center mt-6">
         <button className="text-[var(--primary)] transition-colors font-body">
